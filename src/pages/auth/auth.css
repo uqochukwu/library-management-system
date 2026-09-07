@@ -1,0 +1,90 @@
+.auth-page {
+  min-height: 100vh;
+  background: #202020;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+.auth-card {
+  width: min(390px, 100%);
+  background: #fff;
+  border-radius: 8px;
+  padding: 34px;
+  box-shadow: 0 18px 50px #0006;
+}
+.auth-logo {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.auth-logo b {
+  display: block;
+  font-size: 20px;
+}
+.auth-logo span {
+  font-size: 8px;
+}
+.auth-card h1 {
+  margin: 0 0 6px;
+  font-size: 20px;
+}
+.auth-card p {
+  color: #777;
+  font-size: 11px;
+  margin-bottom: 20px;
+}
+.auth-card form {
+  display: grid;
+  gap: 10px;
+}
+.auth-card input {
+  height: 38px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0 10px;
+}
+.auth-card button {
+  height: 38px;
+  background: #050505;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  font-weight: 700;
+}
+.auth-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-size: 10px;
+}
+.auth-links a,
+.auth-card > a {
+  color: #333;
+}
+.error {
+  padding: 8px;
+  background: #eee;
+  margin-bottom: 10px;
+  font-size: 10px;
+}
+
+.success {
+  padding: 8px;
+  background: #eee;
+  margin-bottom: 10px;
+  font-size: 10px;
+}
+.auth-back {
+  margin-top: 10px !important;
+  background: #ddd !important;
+  color: #111 !important;
+}
+.outline {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 12px;
+  background: #fff;
+  border: 1px solid #111;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 10px;
+}

@@ -1,0 +1,47 @@
+.account {
+  display: grid;
+  place-items: start center;
+}
+.account-card {
+  margin-top: 50px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  padding: 20px;
+  width: min(420px, 100%);
+  display: grid;
+  gap: 10px;
+}
+.account-card h2 {
+  font-size: 13px;
+  margin: 0 0 6px;
+}
+.account-card input {
+  height: 34px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0 9px;
+  font-size: 10px;
+}
+.account-card div {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.account-card button {
+  border: 0;
+  background: #050505;
+  color: #fff;
+  border-radius: 4px;
+  padding: 9px 18px;
+  font-size: 9px;
+  font-weight: 700;
+}
+.account-card .cancel {
+  background: #ddd;
+  color: #111;
+}
+.account-card small {
+  font-size: 9px;
+  color: #555;
+}

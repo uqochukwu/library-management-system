@@ -1,0 +1,15 @@
+export const endpoints = {
+  members: "/api/member",
+  member: (id) => `/api/member/${id}`,
+  memberStatus: (id) => `/api/member/${id}/status`,
+  loans: "/api/loan",
+  loan: (loanId) => `/api/loan/${loanId}`,
+  return:  `/api/processReturn`,
+  reservations: "/api/reservations",
+  reservation: `/api/bookReservation`,
+  books: "/api/book/books",
+  bookCreate: "/api/book/create",
+  bookUpdate: "/api/book/update",
+  bookRemove: "/api/book/remove",
+  settings: "/api/settings",
+};

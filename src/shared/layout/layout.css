@@ -1,0 +1,13 @@
+.app-layout {
+  min-height: 100vh;
+  background: #f4f4f4;
+}
+
+.main-content {
+  margin-left: 330px;
+  min-height: 100vh;
+}
+
+.page-content {
+  padding: 30px;
+}
