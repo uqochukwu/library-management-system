@@ -10,6 +10,23 @@ export const loanService = {
     });
     return apiRequest(`/api/loan?${q}`);
   },
+
+   getBorrowedBooks: async () => {
+    const response = await apiRequest.get(
+      "/api/loan"
+    );
+
+    return response.data;
+  },
+
+  getOverdueBooks: async () => {
+    const response = await apiRequest.get(
+      "/api/loan"
+    );
+
+    return response.data;
+  },
+
   borrow: (p) =>
     apiRequest("/api/issueBook", { method: "POST", body: JSON.stringify(p) }),
   returnBook: (p) =>

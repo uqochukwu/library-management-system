@@ -6,6 +6,12 @@ const MEMBERS_ENDPOINT =
 const CREATEMEMBERS_ENDPOINT =
   import.meta.env.VITE_CREATEMEMBERS_ENDPOINT || "/api/createMember";
 
+const REACTIVATEMEMBERS_ENDPOINT =
+  import.meta.env.VITE_REACTIVATEMEMBERS_ENDPOINT || "/api/reactivateMember";
+
+const DEACTIVATEMEMBERS_ENDPOINT =
+  import.meta.env.VITE_DEACTIVATEMEMBERS_ENDPOINT || "/api/deactivateMember";
+
 export async function getMembers({
   active,
   memberEmail = "",
@@ -49,8 +55,15 @@ export async function updateMember(id, payload) {
   });
 }
 
-export async function deleteMember(id) {
-  return apiRequest(`${MEMBERS_ENDPOINT}/${id}`, {
-    method: "DELETE",
+export async function updateMemberStatus(email, active) {
+  return apiRequest( active ? `${DEACTIVATEMEMBERS_ENDPOINT}/${email}` : `${REACTIVATEMEMBERS_ENDPOINT}/${email}`, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+      Authorisation: 'Bearer ${getToken()}',
+    },
+    body: JSON.stringify({
+      active,
+    })
   });
 }

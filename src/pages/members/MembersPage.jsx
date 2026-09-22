@@ -1,11 +1,20 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react"; 
-import {createMember, deleteMember, getMembers, updateMember,} from "../../core/services/memberService";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  createMember,
+  getMembers,
+  updateMemberStatus,
+} from "../../core/services/memberService";
 import MemberFormModal from "../../shared/components/members/MemberFormModal";
-import ViewMemberModal from "../../shared/components/members/DeleteMemberModal";
-import DeleteMemberModal from "../../shared/components/members/DeleteMemberModal";
+import ViewMemberModal from "../../shared/components/members/StatusMemberModal";
+import StatusMemberModal from "../../shared/components/members/StatusMemberModal";
 import MemberTable from "../../shared/components/members/MemberTable";
 import Pagination from "../../shared/components/common/Pagination";
-import { getItems, getTotalCount, getTotalPages, toMemberPayload, } from "../../utilities/helpers";
+import {
+  getItems,
+  getTotalCount,
+  getTotalPages,
+  toMemberPayload,
+} from "../../utilities/helpers";
 import "./members.css";
 
 const PAGE_SIZE = 10;
@@ -58,12 +67,12 @@ export default function MembersPage() {
 
   const totalCount = useMemo(
     () => getTotalCount(responseMeta, members.length),
-    [responseMeta, members.length]
+    [responseMeta, members.length],
   );
 
   const totalPages = useMemo(
     () => getTotalPages(responseMeta, PAGE_SIZE, totalCount),
-    [responseMeta, totalCount]
+    [responseMeta, totalCount],
   );
 
   function handleSearchSubmit(event) {
@@ -90,10 +99,10 @@ export default function MembersPage() {
     setModal("view");
   }
 
-  function openDelete(member) {
+  function openStatusChange(member) {
     setModalError("");
     setSelectedMember(member);
-    setModal("delete");
+    setModal("status");
   }
 
   function closeModal() {
@@ -111,10 +120,7 @@ export default function MembersPage() {
       if (modal === "add") {
         await createMember(toMemberPayload(form, true));
       } else {
-        const id =
-          selectedMember?.id ??
-          selectedMember?.memberId ??
-          selectedMember?.userId;
+        const id = selectedMember?.email;
 
         if (!id) throw new Error("The selected user has no valid ID.");
 
@@ -130,29 +136,25 @@ export default function MembersPage() {
     }
   }
 
-  async function handleDelete() {
-    setSaving(true);
+  async function handleSuspendReactivate(member) {
     setModalError("");
 
+    const memberId = member?.email;
+
+    if (!memberId) {
+      setModalError("The selected user has no valid ID");
+      return;
+    }
+
+    setSaving(true);
+
     try {
-      const id =
-        selectedMember?.id ??
-        selectedMember?.memberId ??
-        selectedMember?.userId;
-
-      if (!id) throw new Error("The selected user has no valid ID.");
-
-      await deleteMember(id);
+      await updateMemberStatus(memberId, !member.active);
 
       closeModal();
-
-      if (members.length === 1 && pageNumber > 1) {
-        setPageNumber((current) => current - 1);
-      } else {
-        await loadMembers();
-      }
+      await loadMembers();
     } catch (requestError) {
-      setModalError(requestError.message || "Unable to delete user.");
+      setModalError(requestError.message || "Failed to update member status");
     } finally {
       setSaving(false);
     }
@@ -202,15 +204,11 @@ export default function MembersPage() {
           <label>
             Status
             <select
-              value={
-                typeof active === "boolean" ? String(active) : "all"
-              }
+              value={typeof active === "boolean" ? String(active) : "all"}
               onChange={(event) => {
                 const value = event.target.value;
                 setPageNumber(1);
-                setActive(
-                  value === "all" ? undefined : value === "true"
-                );
+                setActive(value === "all" ? undefined : value === "true");
               }}
             >
               <option value="all">All Users</option>
@@ -239,7 +237,7 @@ export default function MembersPage() {
             <MemberTable
               members={members}
               onEdit={openEdit}
-              onDelete={openDelete}
+              onStatusChange={openStatusChange}
               onView={openView}
             />
 
@@ -250,9 +248,7 @@ export default function MembersPage() {
                 setPageNumber((current) => Math.max(1, current - 1))
               }
               onNext={() =>
-                setPageNumber((current) =>
-                  Math.min(totalPages, current + 1)
-                )
+                setPageNumber((current) => Math.min(totalPages, current + 1))
               }
             />
           </>
@@ -271,18 +267,16 @@ export default function MembersPage() {
       ) : null}
 
       {modal === "view" && selectedMember ? (
-        <ViewMemberModal
-          member={selectedMember}
-          onClose={closeModal}
-        />
+        <ViewMemberModal member={selectedMember} onClose={closeModal} />
       ) : null}
 
-      {modal === "delete" && selectedMember ? (
-        <DeleteMemberModal
+      {modal === "status" && selectedMember ? (
+        <StatusMemberModal
+          member={selectedMember}
           loading={saving}
           error={modalError}
           onClose={closeModal}
-          onConfirm={handleDelete}
+          onConfirm={handleSuspendReactivate}
         />
       ) : null}
     </main>

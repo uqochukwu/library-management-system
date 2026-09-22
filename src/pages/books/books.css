@@ -1,0 +1,147 @@
+.bk-page {
+  padding: 20px 22px 36px;
+}
+.bk-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 18px;
+  margin-bottom: 15px;
+}
+.bk-head h1 {
+  margin: 0;
+  font-size: 18px;
+}
+.bk-head p {
+  margin: 4px 0 0;
+  color: #777;
+  font-size: 11px;
+}
+.bk-tools {
+  display: flex;
+  gap: 8px;
+}
+.bk-tools input {
+  height: 31px;
+  width: 190px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+.bk-tools button,
+.book-form button,
+.book-view button,
+.state button {
+  background: #050505;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 0 16px;
+  height: 31px;
+  font-size: 10px;
+  font-weight: 700;
+}
+.bk-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.table-wrap {
+  overflow: auto;
+}
+.bk-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+.bk-table th,
+.bk-table td {
+  height: 34px;
+  padding: 0 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  font-size: 9px;
+}
+.bk-table th {
+  background: #f1f1f1;
+  font-weight: 700;
+}
+.actions {
+  white-space: nowrap;
+}
+.actions button {
+  border: 0;
+  background: none;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.state {
+  padding: 40px;
+  text-align: center;
+  color: #666;
+}
+.state button {
+  margin-top: 10px;
+}
+.book-form,
+.book-view {
+  width: 330px;
+  padding: 20px;
+  background: #fff;
+}
+.modal-title {
+  font-size: 13px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 12px;
+  margin-bottom: 15px;
+}
+.book-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 9px;
+  margin-bottom: 9px;
+}
+.book-form input {
+  height: 30px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 0 9px;
+  font-size: 9px;
+}
+.modal-actions {
+  display: flex;
+  gap: 7px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+.modal-actions .light {
+  background: #ddd;
+  color: #111;
+}
+.book-view p {
+  font-size: 10px;
+  border-bottom: 1px solid #eee;
+  padding: 7px 0;
+}
+.book-view button {
+  width: 100%;
+  margin-top: 10px;
+}
+.field-error {
+  font-size: 9px;
+  color: #444;
+}
+@media (max-width: 700px) {
+  .bk-head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .bk-tools {
+    flex-direction: column;
+  }
+  .bk-tools input {
+    width: 100%;
+  }
+}

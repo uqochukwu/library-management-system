@@ -11,11 +11,12 @@ export function AuthProvider({ children }) {
     }
   });
   const login = (data) => {
-    const u = data?.user || data;
+    const u = data?.user;
     if (data?.data) localStorage.setItem("lms_token", data.data);
     localStorage.setItem("lms_user", JSON.stringify(u));
     setUser(u);
   };
+  
   const logout = () => {
     localStorage.removeItem("lms_token");
     localStorage.removeItem("lms_user");

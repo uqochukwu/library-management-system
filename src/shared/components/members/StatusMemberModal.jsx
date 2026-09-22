@@ -1,34 +1,43 @@
 import React from "react";
 import MemberModal from "./MemberModal";
 
-export default function DeleteMemberModal({
-  loading = false,
-  error = "",
+export default function StatusMemberModal({
+  member,
+  loading,
+  error,
   onClose,
   onConfirm,
 }) {
+  const isActive = member?.active;
+
+  const action = isActive ? "Suspend" : "Reactivate";
+
   return (
     <MemberModal
-      title="Delete Confirmation"
       icon="🚫"
       onClose={onClose}
       className="delete-member-modal"
     >
-      {error ? <div className="member-form-error">{error}</div> : null}
+      <h2>{action} Member</h2>
 
       <p className="delete-message">
-        "Are you certain you wish to proceed with the deletion of the selected
-        entry?"
+        "Are you certain you want to {action.toLowerCase()} this User?"
       </p>
 
+      {error ? <p>{error}</p> : null}
+
       <div className="delete-confirm-wrap">
+        {/* <button type="button" onClick={onClose}>
+          cancel
+        </button> */}
+
         <button
           type="button"
           className="member-button member-button-primary delete-confirm-button"
-          onClick={onConfirm}
+          onClick={() => onConfirm(member)}
           disabled={loading}
         >
-          {loading ? "DELETING..." : "CONFIRM"}
+          {loading ? "Processing..." : action}
         </button>
       </div>
     </MemberModal>

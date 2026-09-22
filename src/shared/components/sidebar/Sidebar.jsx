@@ -1,12 +1,5 @@
 import { NavLink } from "react-router";
-import {
-  LayoutDashboard,
-  Compass,
-  BookOpen,
-  Users,
-  Building2,
-} from "lucide-react";
-
+import { LayoutDashboard, Compass, BookOpen, Users, /*Building2,*/ } from "lucide-react";
 import "./sidebar.css";
 
 

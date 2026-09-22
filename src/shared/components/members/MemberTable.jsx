@@ -1,7 +1,7 @@
 import React from "react";
-import { getMemberEmail, getMemberId, getMemberName, getMemberContactNumber, getMemberPhoneNumber, } from "../../../utilities/helpers";
+import { getMemberEmail, getMemberId, getMemberName, getMemberContactNumber, getMemberPhoneNumber, getMemberActive } from "../../../utilities/helpers";
 
-function Actions({ member, onEdit, onDelete, onView }) {
+function Actions({ member, onEdit, onStatusChange, onView }) {
   return (
     <div className="member-row-actions">
       <button
@@ -15,11 +15,11 @@ function Actions({ member, onEdit, onDelete, onView }) {
 
       <button
         type="button"
-        onClick={() => onDelete(member)}
-        aria-label={`Delete ${getMemberName(member)}`}
-        title="Delete"
+        onClick={() => onStatusChange(member)}
+        aria-label={`StatusChange ${getMemberActive(member)}`}
+        title="Suspend/Reactivate"
       >
-        ✖
+        ⏼
       </button>
 
       <button

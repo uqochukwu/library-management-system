@@ -61,6 +61,38 @@ export async function apiRequest(endpoint, options = {}) {
   return data;
 }
 
+// export async function apiRequest(endpoint, options = {}) {
+//   const token = getToken();
+
+//   const response = await fetch(
+//     `${API_BASE_URL}${endpoint}`,
+//     {
+//       ...options,
+
+//       headers: {
+//         "Content-Type": "application/json",
+
+//         ...(token ? {
+//           Authorization: `Bearer ${token}`,
+//         }
+//       : {}),
+
+//       ...options.headers,
+//       },
+//     }
+//   );
+
+//   const data = await response.json();
+
+//   if(!response.ok) {
+//     throw new Error(
+//       data.message || `Request failed with status ${response.status}`
+//     );
+//   }
+  
+//   return data
+// }
+
 export async function apiFetch(path, options = {}) {
   const token = getToken();
   const headers = {

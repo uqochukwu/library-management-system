@@ -1,0 +1,638 @@
+.catalog-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 24px 28px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+
+.catalog-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 28px;
+}
+
+.catalog-top h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.catalog-top p {
+  margin: 5px 0 0;
+
+  font-size: 12px;
+  color: #777777;
+}
+
+
+.catalog-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 13px;
+  color: #222222;
+}
+
+.catalog-user-avatar {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f0f0f0;
+  color: #222222;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.catalog-user-arrow {
+  font-size: 12px;
+  color: #666666;
+}
+
+
+.catalog-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+.catalog-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+
+.catalog-action {
+  border: none;
+
+  padding: 9px 18px;
+
+  border-radius: 4px;
+
+  background: #eeeeee;
+  color: #333333;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.catalog-action:hover {
+  background: #dddddd;
+}
+
+.catalog-action.active {
+  background: #000000;
+  color: #ffffff;
+}
+
+
+.catalog-search {
+  width: 300px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 9px 12px;
+
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.search-icon {
+  font-size: 16px;
+  color: #777777;
+}
+
+.catalog-search input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  font-size: 11px;
+  color: #333333;
+}
+
+.catalog-search input::placeholder {
+  color: #999999;
+}
+
+
+.catalog-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid #e6e6e6;
+  border-radius: 6px;
+
+  background: #ffffff;
+}
+
+.catalog-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 750px;
+}
+
+.catalog-table thead {
+  background: #fafafa;
+}
+
+.catalog-table th {
+  padding: 14px 16px;
+
+  text-align: left;
+
+  border-bottom: 1px solid #e5e5e5;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  color: #333333;
+}
+
+.catalog-table td {
+  padding: 15px 16px;
+
+  border-bottom: 1px solid #eeeeee;
+
+  font-size: 11px;
+
+  color: #555555;
+}
+
+.catalog-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.catalog-table tbody tr:hover {
+  background: #fafafa;
+}
+
+.catalog-table .book-name {
+  color: #222222;
+  font-weight: 500;
+}
+
+.catalog-more-button {
+  border: none;
+  background: transparent;
+
+  padding: 4px 8px;
+
+  color: #333333;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.catalog-more-button:hover {
+  opacity: 0.6;
+}
+
+.catalog-loading,
+.catalog-empty {
+  padding: 50px;
+
+  text-align: center;
+
+  font-size: 13px;
+  color: #777777;
+}
+
+.catalog-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 18px;
+}
+
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pagination-button {
+  width: 30px;
+  height: 30px;
+
+  border: none;
+  border-radius: 4px;
+
+  background: transparent;
+
+  font-size: 11px;
+  color: #555555;
+
+  cursor: pointer;
+}
+
+.pagination-button:hover {
+  background: #eeeeee;
+}
+
+.pagination-button.active {
+  background: #000000;
+  color: #ffffff;
+}
+
+.pagination-button.next {
+  font-size: 18px;
+}
+
+.pagination-info {
+  display: flex;
+  gap: 20px;
+
+  font-size: 11px;
+  color: #666666;
+}
+
+.catalog-popup-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.58);
+
+  z-index: 1000;
+
+  box-sizing: border-box;
+}
+
+.catalog-popup {
+  width: 100%;
+  max-width: 760px;
+
+  background: #ffffff;
+
+  border-radius: 7px;
+
+  padding: 20px 22px;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.18);
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+.popup-header h2 {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  color: #111111;
+}
+
+.popup-close-icon {
+  border: none;
+  background: transparent;
+
+  padding: 2px 5px;
+
+  font-size: 25px;
+  font-weight: 300;
+
+  line-height: 1;
+
+  color: #222222;
+
+  cursor: pointer;
+}
+
+.popup-close-icon:hover {
+  color: #777777;
+}
+
+
+.popup-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid #eeeeee;
+  border-radius: 6px;
+}
+
+.popup-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 650px;
+}
+
+
+.popup-table th {
+  padding: 11px 12px;
+
+  text-align: left;
+
+  background: #fafafa;
+
+  border-bottom: 1px solid #e5e5e5;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  color: #333333;
+}
+
+
+.popup-table td {
+  padding: 12px;
+
+  border-bottom: 1px solid #eeeeee;
+
+  font-size: 10px;
+
+  color: #555555;
+}
+
+.popup-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.popup-table tbody tr:hover {
+  background: #fafafa;
+}
+
+.popup-action-button {
+  border: none;
+
+  background: transparent;
+
+  padding: 4px;
+
+  font-size: 12px;
+
+  color: #111111;
+
+  cursor: pointer;
+}
+
+.popup-loading,
+.popup-empty {
+  padding: 45px;
+
+  text-align: center;
+
+  font-size: 12px;
+
+  color: #777777;
+}
+
+
+.popup-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 18px;
+}
+
+.popup-summary {
+  display: flex;
+  align-items: center;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+
+  overflow: hidden;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 10px 15px;
+}
+
+.summary-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #222222;
+}
+
+.summary-value {
+  font-size: 10px;
+  color: #555555;
+}
+
+.summary-divider {
+  width: 1px;
+  height: 38px;
+
+  background: #e5e5e5;
+}
+
+
+.popup-close-button {
+  min-width: 105px;
+
+  padding: 10px 20px;
+
+  border: none;
+  border-radius: 5px;
+
+  background: #000000;
+  color: #ffffff;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.popup-close-button:hover {
+  background: #222222;
+}
+
+
+.overdue-popup {
+  max-width: 470px;
+}
+
+
+.overdue-popup-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 16px;
+}
+
+
+.overdue-details {
+  display: flex;
+  align-items: stretch;
+
+  border: 1px solid #e5e5e5;
+
+  border-radius: 6px;
+
+  overflow: hidden;
+}
+
+
+.overdue-id {
+  min-width: 55px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 8px 12px;
+
+  border-right: 1px solid #e5e5e5;
+}
+
+.overdue-label {
+  font-size: 10px;
+  font-weight: 600;
+
+  color: #222222;
+}
+
+.overdue-id-number {
+  margin-top: 5px;
+
+  font-size: 15px;
+
+  color: #555555;
+}
+
+
+.overdue-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+
+  padding: 9px 13px;
+}
+
+.overdue-info div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  font-size: 10px;
+}
+
+.overdue-info strong {
+  font-weight: 600;
+  color: #222222;
+}
+
+.overdue-info span {
+  color: #555555;
+}
+
+
+@media (max-width: 900px) {
+
+  .catalog-page {
+    padding: 18px;
+  }
+
+  .catalog-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .catalog-search {
+    width: 100%;
+  }
+
+  .catalog-pagination {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .catalog-top {
+    align-items: flex-start;
+  }
+
+  .catalog-user {
+    display: none;
+  }
+
+  .catalog-buttons {
+    width: 100%;
+  }
+
+  .catalog-action {
+    flex: 1;
+  }
+
+  .catalog-popup {
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .popup-footer,
+  .overdue-popup-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .popup-close-button {
+    width: 100%;
+  }
+
+}
