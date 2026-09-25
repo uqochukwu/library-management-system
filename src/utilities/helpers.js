@@ -64,7 +64,8 @@ export function toMemberPayload(form, includePassword = true) {
   const payload = {
     name: form.name.trim(),
     email: form.email.trim(),
-    username: form.username.trim(),
+    contactNumber: form.contactNumber.trim(),
+    phoneNumber: form.phoneNumber.trim(),
   };
 
   if (includePassword && form.password.trim()) {

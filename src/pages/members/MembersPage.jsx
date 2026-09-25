@@ -1,9 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  createMember,
-  getMembers,
-  updateMemberStatus,
-} from "../../core/services/memberService";
+import { createMember, getMembers, updateMemberStatus, } from "../../core/services/memberService";
 import MemberFormModal from "../../shared/components/members/MemberFormModal";
 import ViewMemberModal from "../../shared/components/members/StatusMemberModal";
 import StatusMemberModal from "../../shared/components/members/StatusMemberModal";

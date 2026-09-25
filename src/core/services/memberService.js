@@ -7,10 +7,10 @@ const CREATEMEMBERS_ENDPOINT =
   import.meta.env.VITE_CREATEMEMBERS_ENDPOINT || "/api/createMember";
 
 const REACTIVATEMEMBERS_ENDPOINT =
-  import.meta.env.VITE_REACTIVATEMEMBERS_ENDPOINT || "/api/reactivateMember";
+  import.meta.env.VITE_REACTIVATEMEMBERS_ENDPOINT || "/api/reactivatemember";
 
 const DEACTIVATEMEMBERS_ENDPOINT =
-  import.meta.env.VITE_DEACTIVATEMEMBERS_ENDPOINT || "/api/deactivateMember";
+  import.meta.env.VITE_DEACTIVATEMEMBERS_ENDPOINT || "/api/deactivatemember";
 
 export async function getMembers({
   active,
@@ -26,7 +26,7 @@ export async function getMembers({
     params.set("active", String(active));
   }
 
-  if (memberEmail.trim()) {
+  if (typeof memberEmail === "string" && memberEmail.trim()) {
     params.set("memberEmail", memberEmail.trim());
   }
 
@@ -60,7 +60,7 @@ export async function updateMemberStatus(email, active) {
     method: "PUT",
     headers: {
       "content-type": "application/json",
-      Authorisation: 'Bearer ${getToken()}',
+      Authorisation: `Bearer ${getToken()}`,
     },
     body: JSON.stringify({
       active,

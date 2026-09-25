@@ -1,4 +1,4 @@
-import { apiRequest } from "./api";
+import { apiFetch } from "./api";
 
 export const loanService = {
   list(p = {}) {
@@ -8,11 +8,11 @@ export const loanService = {
       pageNumber: String(p.pageNumber ?? 1),
       pageSize: String(p.pageSize ?? 10),
     });
-    return apiRequest(`/api/loan?${q}`);
+    return apiFetch(`/api/loan?${q}`);
   },
 
    getBorrowedBooks: async () => {
-    const response = await apiRequest.get(
+    const response = await apiFetch.get(
       "/api/loan"
     );
 
@@ -20,7 +20,7 @@ export const loanService = {
   },
 
   getOverdueBooks: async () => {
-    const response = await apiRequest.get(
+    const response = await apiFetch.get(
       "/api/loan"
     );
 
@@ -28,9 +28,9 @@ export const loanService = {
   },
 
   borrow: (p) =>
-    apiRequest("/api/issueBook", { method: "POST", body: JSON.stringify(p) }),
+    apiFetch("/api/issueBook", { method: "POST", body: JSON.stringify(p) }),
   returnBook: (p) =>
-    apiRequest("/api/processReturn", {
+    apiFetch("/api/processReturn", {
       method: "POST",
       body: JSON.stringify(p),
     }),

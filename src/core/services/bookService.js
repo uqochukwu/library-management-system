@@ -1,4 +1,4 @@
-import { apiRequest } from "./api";
+import { apiFetch } from "./api";
 const q = (p = {}) => {
   const s = new URLSearchParams();
   if (p.search) s.set("searchterm", p.search);
@@ -9,19 +9,19 @@ const q = (p = {}) => {
 };
 export const bookService = {
   list: (p = {}) => 
-    apiRequest(`/api/book/books${q(p)}`),
+    apiFetch(`/api/book/books${q(p)}`),
   create: (payload) =>
-    apiRequest("/api/book/create", {
+    apiFetch("/api/book/create", {
       method: "POST",
       body: JSON.stringify(payload),
     }),
   update: (payload) =>
-    apiRequest("/api/book/update", {
+    apiFetch("/api/book/update", {
       method: "PUT",
       body: JSON.stringify(payload),
     }),
   remove: (payload) =>
-    apiRequest("/api/book/remove", {
+    apiFetch("/api/book/remove", {
       method: "PUT",
       body: JSON.stringify(payload),
     }),

@@ -1,62 +1,120 @@
-import { NavLink } from "react-router";
-import { LayoutDashboard, Compass, BookOpen, Users, /*Building2,*/ } from "lucide-react";
-import "./sidebar.css";
+import { NavLink, Outlet } from "react-router";
+import { useAuth } from "../../../core/state/AuthContext";
+import {
+  Users,
+  Repeat2,
+  BookImage,
+  BookOpen,
+  LayoutDashboard,
+  Summary,
+  StickyNotePlus,
+  LogOut,
+} from "lucide-react";
+import "../../../index.css"
 
+export default function Sidebar() {
+  const { user, logout } = useAuth();
 
-const navigationItems = [
-  {
-    name: "Dashboard",
-    path: "/dashboard",
-    icon: LayoutDashboard,
-  },
-  {
-    name: "Catalog",
-    path: "/catalog",
-    icon: Compass,
-  },
-  {
-    name: "Books",
-    path: "/books",
-    icon: BookOpen,
-  },
-  {
-    name: "Members",
-    path: "/members",
-    icon: Users,
-  },
-];
-
-function Sidebar() {
   return (
-    <aside className="sidebar">
+    <div className="mb-shell">
+      <aside>
+        <div className="mb-brand">
+          ✿<span>LMS</span>
+        </div>
+        <nav>
+          {user?.role === "Admin" && (
+            <>
+              <NavLink to="/admin">
+                <LayoutDashboard size={15} />
+                Dashboard
+              </NavLink>
+              <NavLink to="/catalog">
+                <BookImage size={15} />
+                Catalog
+              </NavLink>
+              <NavLink to="/books">
+                <BookOpen size={15} />
+                Books
+              </NavLink>
+              <NavLink to="/members">
+                <Users size={15} />
+                Users
+              </NavLink>
+              <NavLink to="/reports">
+                <Summary size={15} />
+                Reports
+              </NavLink>
+              <NavLink to="/reservations">
+                <StickyNotePlus size={15} />
+                Reservations
+              </NavLink>
+            </>
+          )}
 
-      <div className="sidebar-logo">
-        <img alt="LMS Library" />
-      </div>
+          {user?.role === "Librarian" && (
+            <>
+              <NavLink to="/librarian">
+                <LayoutDashboard size={15} />
+                Dashboard
+              </NavLink>
+              <NavLink to="/catalog">
+                <BookImage size={15} />
+                Catalog
+              </NavLink>
+              <NavLink to="/books">
+                <BookOpen size={15} />
+                Books
+              </NavLink>
+              <NavLink to="/members">
+                <Users size={15} />
+                Users
+              </NavLink>
+              <NavLink to="/reports">
+                <Summary size={15} />
+                Reports
+              </NavLink>
+              <NavLink to="/reservations">
+                <StickyNotePlus size={15} />
+                Reservations
+              </NavLink>
+            </>
+          )}
 
-      <nav className="sidebar-navigation">
+          {user?.role === "Member" && (
+            <>
+              <NavLink to="/dashboard">
+                <LayoutDashboard size={15} />
+              </NavLink>
+              <NavLink to="/books">
+                <BookOpen size={15} />
+                Books
+              </NavLink>
+              <NavLink to="/loans">
+                <Repeat2 size={15} />
+              </NavLink>
+            </>
+          )}
+        </nav>
 
-        {navigationItems.map((item) => {
-          const Icon = item.icon;
+        <button
+          onClick={() => {
+            logout;
+          }}
+        >
+          <LogOut size={14} />
+          Log Out
+        </button>
+      </aside>
 
-          return (
-            <NavLink
-              key={item.name}
-              to={item.path}
-              className={({ isActive }) =>
-                `sidebar-link ${isActive ? "active" : ""}`
-              }
-            >
-              <Icon className="sidebar-icon" />
-              <span>{item.name}</span>
-            </NavLink>
-          );
-        })}
+      <header>
+        <span className="hamb">☰</span>
+        <h2>Library Management System</h2>
+        <div className="admin">Admin</div>
+      </header>
 
-      </nav>
-
-    </aside>
+      <main>
+        <Outlet />
+      </main>
+    </div>
   );
 }
-
-export default Sidebar;

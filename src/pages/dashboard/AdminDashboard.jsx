@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import "./dashboard.css";
 
 
-export default function DashboardPage() {
+export default function AdminDashboard() {
   return (
     <>
     <div className="page dash">
@@ -12,7 +12,7 @@ export default function DashboardPage() {
           <p>Welcome back. Here's your library overview.</p>
         </div>
         <Link to="/" className="outline">
-          Change Credentials
+          Settings
         </Link>
       </div>
       <div className="stats">

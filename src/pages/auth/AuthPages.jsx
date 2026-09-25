@@ -31,7 +31,13 @@ function Auth({ mode }) {
       if (mode === "login") {
         login(data); 
         console.log(data);
-        nav("/dashboard");
+        if (data.user.role === "Admin"){
+          nav("/admin");
+        } else if (data.user.role === "Librarian") {
+          nav("/librarian");
+        } else if (data.user.role === "Member") {
+          nav("/dashboard");
+        }
       } else nav("/login");
     } catch (e) {
       setError(e.message);

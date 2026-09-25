@@ -1,4 +1,4 @@
-import { apiRequest } from "./api";
+import { apiFetch } from "./api";
 import { endpoints } from "./endpoints";
 
 export const reservationService = {
@@ -8,11 +8,11 @@ export const reservationService = {
       pageNumber: String(params.pageNumber ?? 1),
       pageSize: String(params.pageSize ?? 10),
     });
-    return apiRequest(`${endpoints.reservations}?${q}`);
+    return apiFetch(`${endpoints.reservations}?${q}`);
   },
 
   create(payload) {
-    return apiRequest(endpoints.reservation, {
+    return apiFetch(endpoints.reservation, {
       method: "POST",
       body: JSON.stringify(payload),
     });
