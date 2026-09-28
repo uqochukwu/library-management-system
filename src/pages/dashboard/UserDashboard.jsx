@@ -1,4 +1,4 @@
-// import { Link } from "react-router";
+import { Link } from "react-router";
 import "./dashboard.css";
 
 
@@ -11,9 +11,9 @@ export default function UserDashboard() {
           <h1>Dashboard</h1>
           <p>Welcome back. Here's your library overview.</p>
         </div>
-        {/* <Link to="/" className="outline">
-          Settings
-        </Link> */}
+        <Link to="/account" className="outline">
+          My Account
+        </Link>
       </div>
       <div className="stats">
         <div>

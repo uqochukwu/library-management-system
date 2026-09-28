@@ -20,7 +20,7 @@ export default function MembersPage() {
   const [pageNumber, setPageNumber] = useState(1);
   const [search, setSearch] = useState("");
   const [active, setActive] = useState(undefined);
-
+  const [showStatusModal, setShowStatusModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -30,6 +30,11 @@ export default function MembersPage() {
   const [modal, setModal] = useState(null);
   const [selectedMember, setSelectedMember] = useState(null);
   const [modalError, setModalError] = useState("");
+
+  const handleStatusChange = (member) => {
+    setSelectedMember(member);
+    setShowStatusModal(true)
+  }
 
   const loadMembers = useCallback(async () => {
     setLoading(true);
@@ -233,7 +238,7 @@ export default function MembersPage() {
             <MemberTable
               members={members}
               onEdit={openEdit}
-              onStatusChange={openStatusChange}
+              onStatusChange={handleStatusChange}
               onView={openView}
             />
 
@@ -266,7 +271,7 @@ export default function MembersPage() {
         <ViewMemberModal member={selectedMember} onClose={closeModal} />
       ) : null}
 
-      {modal === "status" && selectedMember ? (
+      {showStatusModal && (
         <StatusMemberModal
           member={selectedMember}
           loading={saving}
@@ -274,7 +279,7 @@ export default function MembersPage() {
           onClose={closeModal}
           onConfirm={handleSuspendReactivate}
         />
-      ) : null}
+      )}
     </main>
   );
 }

@@ -1,0 +1,58 @@
+.settings-page {
+  padding: 30px;
+}
+.settings-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 620px;
+}
+.settings-card h1 {
+  margin: 0;
+  font-size: 18px;
+}
+.settings-card p {
+  font-size: 10px;
+  color: #777;
+}
+.settings-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 9px;
+  font-weight: 600;
+  margin: 14px 0;
+}
+.settings-card input {
+  height: 32px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 0 9px;
+}
+.setting-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.setting-actions button {
+  height: 31px;
+  border: 0;
+  border-radius: 4px;
+  padding: 0 18px;
+  background: #050505;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+}
+.setting-actions .cancel {
+  background: #ddd;
+  color: #111;
+}
+.success {
+  color: #222 !important;
+}
+.setting-error {
+  font-size: 9px;
+  margin: 8px 0;
+}

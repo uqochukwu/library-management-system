@@ -9,7 +9,7 @@ export function getMemberName(member) {
 }
 
 export function getMemberEmail(member) {
-  return member?.email ?? "—";
+  return member?.email ?? member.memberEmail;
 }
 
 export function getMemberContactNumber(member) {
@@ -88,12 +88,12 @@ export const memberEmail = (m) => m?.email ?? m?.memberEmail ?? "—";
 export const username = (m) => m?.username ?? m?.userName ?? "—";
 
 export const loanId = (l) => l?.id ?? l?.loanId ?? "";
-export const loanMemberId = (l) => l?.memberId ?? l?.userId ?? "—";
+export const loanMemberId = (l) => l?.memberEmail ?? "—";
 export const loanAmount = (l) => l?.amount ?? l?.totalBooks ?? l?.bookCount ?? "—";
 export const loanDueDate = (l) => l?.dueDate ?? "—";
 export const loanDate = (l) => l?.dateTime ?? l?.createdAt ?? l?.borrowedAt ?? "—";
 
-export const bookId = (b) => b?.id ?? b?.bookId ?? "";
+export const bookId = (b) => b?.id ?? b?.isbn ?? "";
 export const bookName = (b) => b?.name ?? b?.title ?? b?.bookName ?? "—";
 export const bookType = (b) => b?.type ?? b?.category ?? "—";
 export const bookLanguage = (b) => b?.language ?? "—";

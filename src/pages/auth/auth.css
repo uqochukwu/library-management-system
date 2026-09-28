@@ -1,7 +1,13 @@
 .auth-page {
   min-height: 100vh;
   background: #202020;
-  display: grid;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url("../../assets/authbackground.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;  display: grid;
   place-items: center;
   padding: 20px;
 }

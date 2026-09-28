@@ -1,0 +1,131 @@
+.ln-page {
+  max-width: 1440px;
+  margin: auto;
+}
+.ln-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.ln-head h1 {
+  font-size: 22px;
+  margin: 0;
+}
+.ln-head > div {
+  display: flex;
+  gap: 10px;
+}
+.ln-head input {
+  height: 38px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  padding: 0 12px;
+  min-width: 230px;
+  background: #fff;
+}
+.ln-card {
+  background: #fff;
+  border-radius: 9px;
+  padding: 16px;
+  box-shadow: 0 2px 10px #0000000d;
+}
+.tabs {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+.tabs button {
+  border: 0;
+  background: #eee;
+  padding: 9px 18px;
+  border-radius: 5px;
+}
+.tabs .on {
+  background: #050505;
+  color: #fff;
+}
+.black {
+  background: #050505;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+.small {
+  padding: 5px 8px;
+  font-size: 10px;
+}
+.scroll {
+  overflow: auto;
+}
+.ln-card table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+.ln-card th {
+  background: #f1f1f1;
+  text-align: left;
+  font-size: 11px;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+.ln-card td {
+  font-size: 11px;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+.actions {
+  display: flex;
+  gap: 7px;
+}
+.actions button {
+  border: 0;
+  background: none;
+}
+.badge {
+  padding: 3px 7px;
+  border-radius: 10px;
+  font-size: 9px;
+}
+.badge.active {
+  background: #e8f5e9;
+}
+.badge.inactive {
+  background: #eee;
+}
+.reserve-form {
+  display: grid;
+  gap: 12px;
+}
+.reserve-form input {
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+}
+.reserve-form > div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.reserve-form button {
+  border: 0;
+  border-radius: 5px;
+  padding: 9px 16px;
+}
+@media (max-width: 700px) {
+  .ln-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .ln-head > div {
+    width: 100%;
+    flex-direction: column;
+  }
+  .ln-head input {
+    width: 100%;
+  }
+}

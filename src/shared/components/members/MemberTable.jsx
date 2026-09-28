@@ -37,7 +37,7 @@ function Actions({ member, onEdit, onStatusChange, onView }) {
 export default function MemberTable({
   members,
   onEdit,
-  onDelete,
+  onStatusChange,
   onView,
 }) {
   return (
@@ -67,7 +67,7 @@ export default function MemberTable({
                   <Actions
                     member={member}
                     onEdit={onEdit}
-                    onDelete={onDelete}
+                    onStatusChange={onStatusChange}
                     onView={onView}
                   />
                 </td>
@@ -95,7 +95,7 @@ export default function MemberTable({
             <Actions
               member={member}
               onEdit={onEdit}
-              onDelete={onDelete}
+              onStatusChange={onStatusChange}
               onView={onView}
             />
           </article>

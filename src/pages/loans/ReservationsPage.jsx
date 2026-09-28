@@ -81,7 +81,7 @@ export default function ReservationsPage() {
               </thead>
               <tbody>
                 {reservations.map((r, i) => (
-                  <tr key={r.id ?? i}>
+                  <tr key={r.isbn ?? i}>
                     <td>{r.reservationId ?? "—"}</td>
                     <td>{r.memberEmail ?? "—"}</td>
                     <td>{r.isbn ?? r.bookIsbn ?? r.bookId ?? "—"}</td>

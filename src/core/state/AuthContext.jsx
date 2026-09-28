@@ -45,6 +45,8 @@ export function AuthProvider({ children }) {
 
     localStorage.removeItem("lms_token");
     localStorage.removeItem("lms_user");
+
+    Navigate("/login");
   };
 
   const isAuthenticated = !!token;

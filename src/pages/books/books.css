@@ -1,5 +1,9 @@
 .bk-page {
-  padding: 20px 22px 36px;
+  width: 100%;
+  min-height: 100%;
+  padding: 24px 28px;
+  background: #ffffff;
+  box-sizing: border-box;
 }
 .bk-head {
   display: flex;
@@ -19,6 +23,7 @@
 }
 .bk-tools {
   display: flex;
+  text-align: center;
   gap: 8px;
 }
 .bk-tools input {

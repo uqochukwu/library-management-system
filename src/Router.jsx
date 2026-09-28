@@ -13,6 +13,7 @@ import ReservationsPage from "./pages/loans/ReservationsPage"
 import AccountPage from "./pages/account/AccountPage"
 import { HistoryPage } from "./pages/reports/ReportsPage"
 import Sidebar from "./shared/components/sidebar/Sidebar"
+import SettingsPage from "./pages/settings/SettingsPage"
 import "./index.css"
 
 
@@ -21,8 +22,10 @@ import "./index.css"
 export default function Router() {
   return (
     <Routes>
+      <Route path="/login" element={<Login />} />        
+      <Route path="/register" element={<Register />} />
+      <Route path="/forgot-password" element={<Forgot />} />
       <Route element={<Sidebar />}>
-        <Route path="/login" element={<Login />} />
         <Route element={<ProtectedRoute allowedRoles={["Admin"]}/>}>
           <Route path="/admin" element={<AdminDashboard />} />
         </Route>
@@ -38,10 +41,9 @@ export default function Router() {
         <Route path="/books" element={<BooksPage />} />
         <Route path="/loans" element={<LoansPage />} />
         <Route path="/reports" element={<HistoryPage />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot-password" element={<Forgot />} />
         <Route path="/reservations" element={<ReservationsPage />} />
         <Route path="/account" element={<AccountPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>

@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { Settings } from "lucide-react";
 import "./dashboard.css";
 
 
@@ -11,9 +12,9 @@ export default function AdminDashboard() {
           <h1>Dashboard</h1>
           <p>Welcome back. Here's your library overview.</p>
         </div>
-        <Link to="/" className="outline">
-          Settings
-        </Link>
+        {/* <Link to="/settings" className="outline">
+          <Settings />
+        </Link> */}
       </div>
       <div className="stats">
         <div>

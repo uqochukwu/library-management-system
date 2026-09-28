@@ -19,7 +19,7 @@ function Form({ initial = empty, onSubmit, onClose, busy, label }) {
       !f.author ||
       !f.isbn ||
       !f.genre ||
-      Number(f.totalCopies) < 0
+      Number(f.numberOfCopies) < 0
     ) {
       setE("Title, author, ISBN, genre and copies are required.");
       return;
@@ -116,7 +116,6 @@ export default function BooksPage() {
     }
   }, [search, page]);
 
-//   useEffect(() => load(), [load]);
   useEffect(() => {
   async function fetchBooks() {
     setBusy(true);
@@ -145,11 +144,11 @@ export default function BooksPage() {
 
 
   const normalize = (b) => ({
-    title: b?.title ?? "",
-    author: b?.author ?? "",
-    isbn: b?.isbn ?? "",
-    genre: b?.genre ?? b?.type ?? "",
-    totalCopies: b?.totalCopies ?? b?.quantity ?? 0,
+    title: b?.title,
+    author: b?.author,
+    isbn: b?.isbn,
+    genre: b?.genre,
+    totalCopies: b?.numberOfCopies,
   });
 
   async function save(payload) {
@@ -190,11 +189,10 @@ export default function BooksPage() {
     <main className="bk-page">
       <div className="bk-head">
         <div>
-          <h1>Book Management</h1>
-          <p>Manage the library catalogue.</p>
+          <h1>LMS Books</h1>
         </div>
         <div className="bk-tools">
-          <button onClick={() => setModal("add")}>＋ Add Book</button>
+          <button onClick={() => setModal("add")}>Borrow Book</button>
           <input
             value={search}
             onChange={(e) => {
@@ -226,8 +224,8 @@ export default function BooksPage() {
                     <th>Author</th>
                     <th>ISBN</th>
                     <th>Genre</th>
-                    <th>Available / Total</th>
-                    <th>Action</th>
+                    <th>Available Copies</th>
+                    {/* <th>Action</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -238,11 +236,8 @@ export default function BooksPage() {
                       <td>{b?.author ?? "—"}</td>
                       <td>{b?.isbn ?? "—"}</td>
                       <td>{b?.genre ?? bookType(b)}</td>
-                      <td>
-                        {b?.availableCopies ?? "—"} /{" "}
-                        {b?.totalCopies ?? b?.quantity ?? "—"}
-                      </td>
-                      <td className="actions">
+                      <td>{b?.totalCopies}</td>
+                      {/* <td className="actions">
                         <button
                           onClick={() => {
                             setSelected(b);
@@ -260,7 +255,7 @@ export default function BooksPage() {
                           ✎
                         </button>
                         <button onClick={() => setSelected(b)}>♜</button>
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
                 </tbody>
@@ -330,51 +325,3 @@ export default function BooksPage() {
     </main>
   );
 }
-
-
-// import { useState } from 'react';
-// import SearchBar from './SearchBar';
-// import BookTable from './Booktable';
-// import Pagination from './Pagination';
-
-// Sample book data
-// const initialBooks = [
-//   { id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', category: 'Fiction', status: 'Available' },
-//   { id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', category: 'Fiction', status: 'Borrowed' },
-//   { id: 3, title: '1984', author: 'George Orwell', category: 'Dystopian', status: 'Available' },
-//   { id: 4, title: 'Sapiens', author: 'Yuval Noah Harari', category: 'History', status: 'Available' },
-//   { id: 5, title: 'React Guide', author: 'Dev Community', category: 'Technology', status: 'Available' },
-// ];
-
-// function BooksPage() {
-//   const [searchTerm, setSearchTerm] = useState('');
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const booksPerPage = 3;
-
-//   // Filter books based on search input
-//   const filteredBooks = initialBooks.filter(book =>
-//     book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-//     book.author.toLowerCase().includes(searchTerm.toLowerCase())
-//   );
-
-//   // Pagination logic
-//   const indexOfLastBook = currentPage * booksPerPage;
-//   const indexOfFirstBook = indexOfLastBook - booksPerPage;
-//   const currentBooks = filteredBooks.slice(indexOfFirstBook, indexOfLastBook);
-//   const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
-
-//   return (
-//     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-//       <h1>Library Management System</h1>
-//       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-//       <BookTable books={currentBooks} />
-//       <Pagination 
-//         currentPage={currentPage} 
-//         totalPages={totalPages} 
-//         onPageChange={setCurrentPage} 
-//       />
-//     </div>
-//   );
-// }
-
-// export default BooksPage;
